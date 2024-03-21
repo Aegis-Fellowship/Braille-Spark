@@ -1,17 +1,44 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.sass'
 })
 export class LoginComponent {
-  @Output('toggleRegisterPage')
-  toggleRegisterPage: EventEmitter<any> = new EventEmitter();
-
+  // Switch to register panel
+  @Output('changeLandingPage')
+  changeLandingPage: EventEmitter<{ page: string }> = new EventEmitter();
   openRegisterPage() {
-    this.toggleRegisterPage.emit();
+    this.changeLandingPage.emit({page: 'register'});
+  }
+
+  // Show Error Message
+  showErrorMessage = false
+  toggleErrorMessage() {
+    this.showErrorMessage = !this.showErrorMessage
+  }
+
+  // Submit form
+  formData = {
+    "username": "",
+    "password": ""
+  }
+
+  constructor(private http: HttpClient, private router: Router) {}
+  endpoint = 'http://localhost:8080/aegis-backend/login'
+  onSubmit() {
+    this.http.post(this.endpoint, this.formData)
+      .subscribe((response) => {
+        this.changeLandingPage.emit({page: 'dashboard'});
+      }, (error) => {
+        this.toggleErrorMessage()
+      });
   }
 }

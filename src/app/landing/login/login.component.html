@@ -1,18 +1,23 @@
 <div class="login-panel">
     <h1 class="title">Sign in</h1>
-    <form action="">
+    <form (submit)="onSubmit()">
         <div class="input">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="text-input">
+            <input type="text" id="username" name="username" class="text-input" [(ngModel)]="formData.username" required>
         </div>
         <div class="input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="text-input">
+            <input type="password" id="password" name="password" class="text-input" [(ngModel)]="formData.password" required>
         </div>
-        <input type="button" value="Sign in" class="button" >
+        <input type="submit" value="Sign in" class="button" >
     </form>
     <div class="no-account">
         <h4>Don't have an account?</h4>
         <button (click)="openRegisterPage()" class="button-small">Create Account</button>
     </div>
+</div>
+<div class="alert" *ngIf="showErrorMessage">
+    <h3>
+        This combination doesn't exist.
+    </h3>
 </div>

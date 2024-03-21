@@ -1,0 +1,58 @@
+.dashboard-panel
+    width: 70%
+    height: 80%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 20px
+    font-family: Jockey One
+    user-select: none
+    overflow: hidden
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: 1fr
+    column-gap: 3%
+
+    .first-half
+        display: grid
+        grid-template-rows: 60% 33%
+        gap: 6%
+        border-radius: 30px
+
+    .second-half
+        display: grid
+        grid-template-rows: 33% 60%
+        gap: 6%
+        border-radius: 30px
+
+    .box
+        background-color: white
+        border-radius: 30px
+        cursor: pointer
+        text-wrap: nowrap
+        &:hover
+            transform: scale(0.95)
+            transition-duration: 200ms
+        &:not(:hover)
+            transform: scale(1)
+            transition-duration: 200ms
+
+    .big-box
+        .icon
+            width: 50%
+
+    .small-box
+        .icon
+            width: 28%
+
+    .icon-and-title
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -30%)
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        font-size: small

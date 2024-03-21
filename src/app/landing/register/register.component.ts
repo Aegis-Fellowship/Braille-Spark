@@ -1,17 +1,40 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.sass'
 })
 export class RegisterComponent {
-  @Output('toggleRegisterPage')
-  toggleRegisterPage: EventEmitter<any> = new EventEmitter();
-
+  // Switch to login panel
+  @Output('changeLandingPage')
+  changeLandingPage: EventEmitter<{ page: string }> = new EventEmitter();
   closeRegisterPage() {
-    this.toggleRegisterPage.emit();
+    this.changeLandingPage.emit({page: 'login'});
+  }
+
+  // Submit form
+  formData = {
+    "username": "",
+    "firstName": "",
+    "lastName": "",
+    "password": ""
+  }
+
+  constructor(private http: HttpClient, private router: Router) {}
+  endpoint = 'http://localhost:8080/aegis-backend/registration'
+  onSubmit() {
+    this.http.post(this.endpoint, this.formData)
+      .subscribe((response) => {
+        this.changeLandingPage.emit({page: 'login'});
+      }, (error) => {
+        alert('Failed to create account.')
+      });
   }
 }
