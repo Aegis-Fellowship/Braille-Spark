@@ -1,0 +1,59 @@
+$primary-color: #333
+$secondary-color: #ccc
+
+.navbar 
+  background-color: $primary-color
+  padding: 10px 20px
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  .logo 
+    img 
+      width: 200px
+      height: auto
+    
+  
+  .nav-links 
+    list-style: none
+    position: relative
+    margin-right: 1%
+    display: flex
+    color:#fff
+
+    li
+     
+      margin-right: 20px
+      
+      &:last-child 
+        margin-right: 0
+      
+      img  
+        width:50px
+      a 
+        text-decoration: none
+        color: $secondary-color
+        transition: color 0.3s ease
+
+        &:hover 
+          color: white
+
+
+@media (max-width: 768px)
+
+    .nav-links
+      margin-top: 20px
+      flex-direction: column
+
+      li
+        margin-right: 0
+        margin-bottom: 10px
+        text-align: center
+
+        &:last-child 
+          margin-bottom: 0
+        
+    
+  
+
+
