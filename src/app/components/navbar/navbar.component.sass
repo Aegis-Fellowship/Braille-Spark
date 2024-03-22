@@ -1,30 +1,38 @@
-$primary-color: #333
+@import '../../../styles.sass'
 $secondary-color: #ccc
 
 .navbar 
-  background-color: $primary-color
-  padding: 10px 20px
-  display: flex
-  justify-content: space-between
-  align-items: center
-
-  .logo 
-    img 
-      width: 200px
-      height: auto
-    
-  
-  .nav-links 
-    list-style: none
-    position: relative
-    margin-right: 1%
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 60px
+    background-color: $aegis-dark-gray
     display: flex
-    color:#fff
+    align-items: center
 
+    .braille-spark-logo 
+        position: absolute
+        left: 2%
+        width: 10%
+    
+    .aegis-logo
+        position: absolute
+        right: 2%
+        height: 70%
+  
+    .nav-links 
+        position: absolute
+        left: 50%
+        padding: 0
+        transform: translate(-50%, 0)
+        gap: 5%
+        width: 100%
+        list-style: none
+        display: flex
+        justify-content: center
+        color:#fff
     li
-     
-      margin-right: 20px
-      
       &:last-child 
         margin-right: 0
       
