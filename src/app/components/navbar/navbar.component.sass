@@ -46,14 +46,17 @@
       img  
         width:50%
         height: 80%
+        &:hover 
+          transform: scale(1.2)
+          transition-duration: 200ms
+        &:not(:hover)
+            transform: scale(1)
+            transition-duration: 200ms
         
       a 
         text-decoration: none
-        color: $aegis-white
+        color: $aegis-light-gray
         transition: color 0.3s ease
-
-        &:hover 
-          color: white
 
 .background
     background-color: #2F5F90
