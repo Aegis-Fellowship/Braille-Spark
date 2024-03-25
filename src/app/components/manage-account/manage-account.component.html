@@ -1,19 +1,43 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Navbar</title>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="logo">
-      <img src="./../../../assets/Braille Spark-logos_white2.0.png" alt="Logo">
+<app-navbar></app-navbar>
+
+<div class="background" >
+<div class="settingsPanel">
+    <div class="title">
+        <h1>Account Settings</h1>
     </div>
-    <ul class="nav-links">
-      <li><a class='navBarLogos' routerLink="/dashboard"><img src="./../../../assets/Whitebook.png" ></a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Portfolio</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-</body>
+    <div class="inputFields">
+        <h3> Change Username</h3>
+        <img src="assets/Username.png" alt="username logo">
+    </div>
+    <br>
+    <div class="inputFields">
+        <h3> Change Password</h3>
+        <img src="assets/Password.png" alt="password logo">
+    </div>
+    <br>
+    <div class="inputFields">
+        <h3> Request Admin Priviliges</h3>
+        <img src="assets/Question.png" alt="username logo">
+    </div>
+    <br><br><br>
+    <button class="signout" routerLink="/">sign out</button>
+</div>
+<div class="changingPanel">
+    
+    <h2 class="Heading">Change Username</h2>
+
+    
+    <br>
+    <div class="input1">
+        <input placeholder="New Username">
+    </div>
+    <div class="input2">
+        <input placeholder="Retype New Username">
+    </div>
+    <div class="input3">
+        <input placeholder="Type in your password">
+    </div>
+    <button class="Submit" >Change Username</button>
+    
+</div>
+</div>
