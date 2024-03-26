@@ -4,18 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router';
 
 @Component({
-  selector: 'app-change-username',
+  selector: 'app-request-admin',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './change-username.component.html',
-  styleUrl: './change-username.component.sass'
+  templateUrl: './request-admin.component.html',
+  styleUrl: './request-admin.component.sass'
 })
-export class ChangeUsernameComponent {
-  // Submit form
-  formData = {
-    "oldUsername": "",
-    "newUsername": ""
-  }
+export class RequestAdminComponent {
+    // Submit form
+    formData = {
+      "requestCode": "",
+    }
 
   constructor(private http: HttpClient, private router: Router) {}
   endpoint = 'http://localhost:8080/aegis-backend/---'
@@ -23,10 +22,10 @@ export class ChangeUsernameComponent {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
         window.location.href = "dashboard"
-        alert("Username Changed")
+        alert("Privilege Granted")
       }, (error) => {
         console.log(error.Message)
-        alert("Failed to change username")
+        alert("Failed to request access")
       });
   }
 }

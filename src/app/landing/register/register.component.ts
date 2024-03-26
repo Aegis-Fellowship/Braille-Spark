@@ -35,6 +35,7 @@ export class RegisterComponent {
         this.changeLandingPage.emit({page: 'login'});
       }, (error) => {
         alert('Failed to create account.')
+        console.log("Error: " + error.message)
       });
   }
 }

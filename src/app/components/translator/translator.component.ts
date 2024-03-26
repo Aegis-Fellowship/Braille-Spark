@@ -38,6 +38,6 @@ export class TranslatorComponent {
     confirmationElement.style.display = "flex"
     setTimeout(function() {
       confirmationElement.style.display = "none";
-  }, 1500);
+    }, 1500);
   }
 }

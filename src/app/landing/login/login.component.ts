@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
