@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +36,7 @@ export class LoginComponent {
   onSubmit() {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
-        this.changeLandingPage.emit({page: 'dashboard'});
+        window.location.href = "dashboard"
       }, (error) => {
         this.toggleErrorMessage()
       });
