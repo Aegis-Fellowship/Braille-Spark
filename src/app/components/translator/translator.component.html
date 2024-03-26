@@ -1,3 +1,21 @@
 <app-navbar>
-    OPA
+    <div class="container">
+        <div class="text-panels">
+            <div class="text-area">
+                <div class="text-label">
+                    Enter Text To Be Translated
+                </div>
+                <textarea id="latin-text" class="text-box" placeholder="Lorem ipsum dolor sit amet"></textarea>
+            </div>
+            <div class="text-area">
+                <div class="text-label">
+                    Translated Text
+                </div>
+                <textarea id="braille-text" class="text-box" placeholder="⠇⠕⠗⠑⠍⠀⠊⠏⠎⠥⠍⠀⠙⠕⠇⠕⠗⠀⠎⠊⠞⠀⠁⠍⠑⠞" disabled></textarea>
+            </div>
+        </div>
+        <button (click)="translate()">
+            Translate
+        </button>
+    </div>
 </app-navbar>
