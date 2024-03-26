@@ -28,7 +28,7 @@ export class RegisterComponent {
   }
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/registration'
+  endpoint = 'http://ec2-3-140-203-213.us-east-2.compute.amazonaws.com:8080/aegis-backend/registration'
   onSubmit() {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
