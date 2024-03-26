@@ -1,28 +1,27 @@
-<app-navbar></app-navbar>
-
-<div class="background">
-    <div class="settingsPanel">
-        <div class="title">
-            <h1>Account Settings</h1>
+<app-navbar>
+    <div class="container">
+        <div class="settingsPanel">
+            <div class="title">
+                <h1>Account Settings</h1>
+            </div>
+            <div class="inputFields">
+                <img src="assets/Username.png" alt="username logo">
+                <h3> Change Username</h3>
+            </div>
+            <br>
+            <div class="inputFields">
+                <img src="assets/Password.png" alt="password logo">
+                <h3> Change Password</h3>
+            </div>
+            <br>
+            <div class="inputFields">
+                <img src="assets/Question.png" alt="username logo">
+                <h3> Request Admin Privilege</h3>
+            </div>
+            <button class="signout" routerLink="/">Sign Out</button>
         </div>
-        <div class="inputFields">
-            <h3> Change Username</h3>
-            <img src="assets/Username.png" alt="username logo">
+        <div class="changingPanel">
+            <app-change-username></app-change-username>
         </div>
-        <br>
-        <div class="inputFields">
-            <h3> Change Password</h3>
-            <img src="assets/Password.png" alt="password logo">
-        </div>
-        <br>
-        <div class="inputFields">
-            <h3> Request Admin Priviliges</h3>
-            <img src="assets/Question.png" alt="username logo">
-        </div>
-        <br><br><br>
-        <button class="signout" routerLink="/">Sign Out</button>
     </div>
-    <div class="changingPanel">
-        <app-change-username></app-change-username>
-    </div>
-</div>
+</app-navbar>

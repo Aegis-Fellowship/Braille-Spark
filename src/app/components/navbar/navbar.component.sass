@@ -1,33 +1,45 @@
 @import '../../../styles.sass'
 
+.background
+  background-color: #2F5F90
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  
+  .content
+    padding: 2%
+
 .navbar 
-    position: fixed
-    top: 0
-    left: 0
+    position: relative
     width: 100%
     height: 60px
     background-color: black
     display: flex
     align-items: center
+    z-index: 99
 
     .braille-spark-logo 
         position: absolute
         left: 2%
         width: 10%
-        top: 15%
+        top: 50%
+        transform: translateY(-50%)
     
     .aegis-logo
         position: absolute
         right: 2%
-        top: 15%
+        top: 50%
+        transform: translateY(-50%)
         height: 50%
   
     .nav-links 
         position: absolute
         left: 50%
-        top: -15%
-        padding: 0
-        transform: translate(-50%, 0)
+        top: 50%
+        transform: translate(-50%, -85%)
         gap: 5%
         width: 100%
         list-style: none
@@ -57,13 +69,6 @@
         text-decoration: none
         color: $aegis-light-gray
         transition: color 0.3s ease
-
-.background
-    background-color: #2F5F90
-    position: absolute
-    left: 0%
-    width: 100%
-    height: 100%
 
 @media (max-width: 768px)
 
