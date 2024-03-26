@@ -24,4 +24,20 @@ export class TranslatorComponent {
       console.log("Translation Failed")
     }
   }
+
+  copyToClipboard() {
+    const resultElement = document.getElementById("braille-text") as HTMLTextAreaElement;
+    const confirmationElement = document.getElementById("confirmation") as HTMLDivElement;
+
+    // Copy
+    resultElement.select();
+    navigator.clipboard.writeText(resultElement.value);
+    resultElement.blur()
+
+    // Display confirmation div
+    confirmationElement.style.display = "flex"
+    setTimeout(function() {
+      confirmationElement.style.display = "none";
+  }, 1500);
+  }
 }
