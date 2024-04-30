@@ -1,0 +1,44 @@
+<app-navbar>
+    <div class="container">
+        <div class="modules-list">
+            <div class="title-area">
+                <h1 class="title">Course Content</h1>
+            </div>
+            @for (item of modules; track item) {
+                <div class="module-selector" (click)="addModulePanel = false; moduleSelected = item.id">
+                    <p>{{ item.name }}</p> 
+                </div>
+            }
+            <div class="add-module-selector module-selector" (click)="addModulePanel = true">
+                <p>+</p>
+            </div>
+        </div>
+        <div class="module">
+            @if (!addModulePanel) {
+                @if (moduleSelected) {
+                    <h1>{{ getName(this.moduleSelected) }}</h1>
+                    <div class="content">
+                        <p>{{ getContent(this.moduleSelected) }}</p>
+                    </div>
+                } @else {
+                    <h1 class="default-message">Select a module to start.</h1>
+                }
+            } @else {
+                <div class="add-module">
+                    <form (submit)="onSubmit()">
+                        <div class="input">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="text-input" [(ngModel)]="formData.name" required>
+                        </div>
+                        <div class="input">
+                            <label for="content">Content</label>
+                            <textarea type="text" id="content" name="content" class="text-input large" [(ngModel)]="formData.content" required></textarea>
+                        </div>
+                        <input type="submit" value="Add Module" class="button" >
+                    </form>
+                </div>
+            }
+            
+        </div>
+    </div>
+</app-navbar>

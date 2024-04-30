@@ -1,5 +1,37 @@
 @import '../../../styles.sass'
 
+.overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    margin: 0
+    background-color: rgba(0, 0, 0, 0.7)
+    z-index: 99
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .file-panel
+        position: relative
+        width: 25%
+        height: 15%
+        background-color: white
+        border: 4px black solid
+        display: flex
+        align-items: center
+        justify-content: center
+
+        .close-panel-icon
+            position: absolute
+            margin: 0
+            top: 12px
+            right: 12px
+            font-family: inter
+            cursor: pointer
+            color: $aegis-dark-gray
+
 .container
     width: 100%
     height: 75%
@@ -53,6 +85,11 @@
                 font-family: Jockey One
                 font-size: large
                 padding-bottom: 1%
+
+                span
+                    margin-left: 12px
+                    color: $aegis-medium-gray
+                    cursor: pointer
 
             .text-box
                 width: 100%

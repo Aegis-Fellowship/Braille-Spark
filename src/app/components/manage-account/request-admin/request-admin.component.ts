@@ -16,9 +16,13 @@ export class RequestAdminComponent {
       "requestCode": "",
     }
 
+    // User ID
+    id = localStorage.getItem('id');
+
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/---'
+  endpoint = 'http://localhost:8080/aegis-backend/' + this.id + '/requestadmin'
   onSubmit() {
+    console.log(this.endpoint);
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
         window.location.href = "dashboard"

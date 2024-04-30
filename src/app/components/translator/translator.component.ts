@@ -10,6 +10,8 @@ import { latinToBraille } from './brailleConverter';
   styleUrl: './translator.component.sass'
 })
 export class TranslatorComponent {
+
+  showOverlay = false;
   
   text: string | null = "";
 
@@ -39,5 +41,30 @@ export class TranslatorComponent {
     setTimeout(function() {
       confirmationElement.style.display = "none";
     }, 1500);
+  }
+
+  // Handling files
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.readFile(file);
+    }
+  }
+
+  readFile(file: File) {
+    const reader = new FileReader();
+    const resultElement = document.getElementById("braille-text") as HTMLTextAreaElement;
+
+    reader.onload = (e: any) => {
+      const content: string = e.target.result;
+      resultElement.value = latinToBraille(content);
+      this.showOverlay = false;
+    };
+
+    reader.onerror = (e: any) => {
+      console.error('Error reading file:', reader.error);
+    };
+    
+    reader.readAsText(file);
   }
 }

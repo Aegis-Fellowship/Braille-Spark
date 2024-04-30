@@ -1,0 +1,102 @@
+@import '../../../styles.sass'
+
+.container
+    height: 80%
+    width: 100%
+    display: flex
+    
+    .modules-list
+        height: 100%
+        width: 20%
+        background: white
+        margin-right: 4%
+        border: 4px black solid
+        border-radius: 12px
+
+        .title-area
+            width: 100%
+            height: 8%
+            text-align: center
+            border-bottom: 4px $aegis-dark-gray solid
+
+            .title
+                font-family: jockey one
+                font-size: 24px
+                color: black
+                margin-bottom: 10%
+
+        .module-selector
+            width: 100%
+            height: 12%
+            border-bottom: 4px $aegis-dark-gray solid
+            display: flex
+            align-items: center
+            justify-content: center
+            font-family: inter
+            font-size: 16px
+            cursor: pointer
+            transition-duration: 200ms
+
+            &:hover
+                background-color: $aegis-blue
+                color: white
+
+        .add-module-selector
+            font-size: 40px
+
+    .module
+        position: relative
+        height: 100%
+        width: 70%
+        background: white
+        border: 4px black solid
+        border-radius: 12px
+        display: flex
+        justify-content: center
+        overflow: auto
+
+        h1
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            font-family: inter
+
+        .content
+            width: 80%
+            padding: 36px
+            margin-top: 20px
+            font-size: 20px
+            font-family: inter
+            line-height: 1.6
+
+        .default-message
+            position: absolute
+            top: 10%
+            left: 50%
+            transform: translate(-50%, -100%)
+            text-decoration: underline
+
+        .add-module
+            width: 70%
+            padding: 36px
+            font-size: 20px
+            font-family: inter
+
+            .input
+                display: flex
+                flex-direction: column
+                margin: 30px
+
+                .text-input
+                    padding: 8px 20px
+                    border-radius: 15px
+                    font-family: inter
+
+                .large
+                    height: auto
+                    min-height: 200px
+
+            .button
+                position: absolute
+                left: 50%
+                transform: translateX(-50%)

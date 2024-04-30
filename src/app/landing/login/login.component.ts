@@ -32,10 +32,11 @@ export class LoginComponent {
   }
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://ec2-3-140-203-213.us-east-2.compute.amazonaws.com:8080/aegis-backend/login'
+  endpoint = 'http://localhost:8080/aegis-backend/login'
   onSubmit() {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
+        localStorage.setItem('id', response.toString());
         window.location.href = "dashboard"
       }, (error) => {
         this.toggleErrorMessage()
