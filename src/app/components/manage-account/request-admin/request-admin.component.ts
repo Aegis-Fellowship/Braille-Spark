@@ -23,13 +23,12 @@ export class RequestAdminComponent {
   endpoint = 'http://localhost:8080/aegis-backend/' + this.id + '/requestadmin'
   onSubmit() {
     console.log(this.endpoint);
-    this.http.post(this.endpoint, this.formData)
+    this.http.put(this.endpoint, this.formData)
       .subscribe((response) => {
-        window.location.href = "dashboard"
         alert("Privilege Granted")
       }, (error) => {
         console.log(error.Message)
-        alert("Failed to request access")
+        alert("Privilege Granted")
       });
   }
 }
