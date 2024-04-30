@@ -13,14 +13,18 @@ import { Router} from '@angular/router';
 export class ChangePasswordComponent {
     // Submit form
     formData = {
-      "password": "",
-      "confirmation": ""
+      "oldPassword": "",
+      "newPassword": "",
+      "confirmPassword": ""
     }
 
+    // User ID
+    id = localStorage.getItem('id');
+
     constructor(private http: HttpClient, private router: Router) {}
-    endpoint = 'http://localhost:8080/aegis-backend/---'
+    endpoint = 'http://localhost:8080/aegis-backend/' + this.id + '/manage-account/editPassword'
     onSubmit() {
-      this.http.post(this.endpoint, this.formData)
+      this.http.put(this.endpoint, this.formData)
         .subscribe((response) => {
           window.location.href = "dashboard"
           alert("Password Changed")

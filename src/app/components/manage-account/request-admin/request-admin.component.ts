@@ -26,9 +26,10 @@ export class RequestAdminComponent {
     this.http.put(this.endpoint, this.formData)
       .subscribe((response) => {
         alert("Privilege Granted")
+        window.location.href = "dashboard"
       }, (error) => {
         console.log(error.Message)
-        alert("Privilege Granted")
+        alert("Failed to request admin privilege")
       });
   }
 }

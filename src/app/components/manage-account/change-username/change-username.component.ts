@@ -13,14 +13,16 @@ import { Router} from '@angular/router';
 export class ChangeUsernameComponent {
   // Submit form
   formData = {
-    "oldUsername": "",
     "newUsername": ""
   }
 
+  // User ID
+  id = localStorage.getItem('id');
+
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/---'
+  endpoint = 'http://localhost:8080/aegis-backend/' + this.id + '/manage-account/editUsername'
   onSubmit() {
-    this.http.post(this.endpoint, this.formData)
+    this.http.put(this.endpoint, this.formData)
       .subscribe((response) => {
         window.location.href = "dashboard"
         alert("Username Changed")
