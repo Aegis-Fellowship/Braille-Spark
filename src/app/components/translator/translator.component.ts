@@ -43,14 +43,13 @@ export class TranslatorComponent {
     }, 1500);
   }
 
-  // Handling files
+  // Importing file
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
       this.readFile(file);
     }
   }
-
   readFile(file: File) {
     const reader = new FileReader();
     const resultElement = document.getElementById("braille-text") as HTMLTextAreaElement;
@@ -66,5 +65,20 @@ export class TranslatorComponent {
     };
     
     reader.readAsText(file);
+  }
+
+  // Exporting file
+  downloadBraille() {
+    const resultElement = document.getElementById("braille-text") as HTMLTextAreaElement;
+    const textContent = resultElement.value;
+    const blob = new Blob([textContent], { type: 'text/plain' });
+
+    const anchor = document.createElement('a');
+    anchor.download = 'braille.txt';
+    anchor.href = (window.URL).createObjectURL(blob);
+    anchor.setAttribute('style', 'display: none');
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
   }
 }
