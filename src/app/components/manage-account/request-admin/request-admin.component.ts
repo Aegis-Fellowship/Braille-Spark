@@ -17,12 +17,11 @@ export class RequestAdminComponent {
     }
 
     // User ID
-    id = localStorage.getItem('id');
+    userID = localStorage.getItem('id');
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/' + this.id + '/requestadmin'
+  endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/requestadmin'
   onSubmit() {
-    console.log(this.endpoint);
     this.http.put(this.endpoint, this.formData)
       .subscribe((response) => {
         alert("Privilege Granted")

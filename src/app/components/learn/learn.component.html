@@ -6,12 +6,17 @@
             </div>
             @for (item of modules; track item) {
                 <div class="module-selector" (click)="addModulePanel = false; moduleSelected = item.id">
-                    <p>{{ item.name }}</p> 
+                    <p>{{ item.moduleName }}</p> 
+                    @if (isAdmin) {
+                        <img src="assets/icon-trash.png" alt="Delete Module" class="icon-trash" (click)="deleteModule(moduleSelected)">
+                    }
                 </div>
             }
-            <div class="add-module-selector module-selector" (click)="addModulePanel = true">
-                <p>+</p>
-            </div>
+            @if (isAdmin) {
+                <div class="add-module-selector module-selector" (click)="addModulePanel = true">
+                    <p>+</p>
+                </div>
+            }
         </div>
         <div class="module">
             @if (!addModulePanel) {
@@ -21,11 +26,12 @@
                         <p>{{ getContent(this.moduleSelected) }}</p>
                     </div>
                 } @else {
-                    <h1 class="default-message">Select a module to start.</h1>
+                    <img src="assets/braille-spark-logo-black.png" alt="Braille-Spark Logo" class="default-message">
                 }
             } @else {
+                <h1>Add Module</h1>
                 <div class="add-module">
-                    <form (submit)="onSubmit()">
+                    <form (submit)="addModule()">
                         <div class="input">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" class="text-input" [(ngModel)]="formData.name" required>
@@ -34,11 +40,14 @@
                             <label for="content">Content</label>
                             <textarea type="text" id="content" name="content" class="text-input large" [(ngModel)]="formData.content" required></textarea>
                         </div>
+                        <div class="input">
+                            <label for="character">Characters taught (max: 3)</label>
+                            <input type="text" id="character" name="character" maxlength="3" class="text-input" [(ngModel)]="formData.character" required>
+                        </div>
                         <input type="submit" value="Add Module" class="button" >
                     </form>
                 </div>
             }
-            
         </div>
     </div>
 </app-navbar>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { Modules } from './modules';
 
 @Component({
   selector: 'app-learn',
@@ -13,42 +13,88 @@ import { Modules } from './modules';
   styleUrl: './learn.component.sass'
 })
 export class LearnComponent {
-  modules: any;
-  moduleSelected = ""
-  addModulePanel = false
+  // Preparing client
+  constructor(private http: HttpClient, private router: Router) {}
+  endpoint = ''
 
-  constructor(private moduleService: Modules) {
-    this.modules = this.moduleService.getModules();
+  modules: any;
+  moduleSelected = "";
+  addModulePanel = false;
+  isAdmin = false;
+
+  // Receiving admin status and modules when opening the page
+  userID = localStorage.getItem('id');
+  
+  loadModules() {
+    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/modules'
+    this.http.get(this.endpoint)
+      .subscribe((response) => {
+        this.modules = response;
+        console.log(this.modules)
+      }, (error) => {
+        console.log(error.Message)
+      });
+  };
+
+  checkAdmin() {
+    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/checkAdmin'
+    this.http.get(this.endpoint)
+      .subscribe((response) => {
+        if (response) {
+          this.isAdmin = true
+        }
+      }, (error) => {
+        console.log(error.Message)
+      });
+  }
+
+  ngOnInit() {
+    this.loadModules();
+    this.checkAdmin();
   }
 
   getName(id: string) {
     for (let item of this.modules) {
       if (id == item.id) {
-        return item.name
+        return item.moduleName
       }
     }
-
     return ""
   }
 
   getContent(id: string) {
     for (let item of this.modules) {
       if (id == item.id) {
-        return item.content
+        return item.moduleContent
       }
     }
-
     return ""
   }
 
-  // Submit form
+  // Add Module
   formData = {
-    "id": (Math.floor(Math.random() * 20000) + 1).toString(),
     "name": "",
+    "character": "",
     "content": ""
   }
+  addModule() {
+    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/addModule'
+    this.http.post(this.endpoint, this.formData)
+      .subscribe((response) => {
+        window.location.reload()
+      }, (error) => {
+        console.log(error.Message)
+      });
+  }
 
-  onSubmit() {
-    this.moduleService.addModules(this.formData)
+  // Delete Module
+  deleteModule(moduleID: string) {
+    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/deleteModule/' + moduleID
+    this.http.delete(this.endpoint)
+      .subscribe((response) => {
+        window.location.reload()
+      }, (error) => {
+        console.log(error.Message)
+      });
   }
 }
