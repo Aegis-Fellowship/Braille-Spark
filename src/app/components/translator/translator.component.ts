@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { latinToBraille } from './brailleConverter';
+import { translateToBraille } from './brailleConverter';
 
 @Component({
   selector: 'app-translator',
@@ -21,7 +21,7 @@ export class TranslatorComponent {
 
     if (textElement) {
       this.text = textElement.value ?? "";
-      resultElement.value = latinToBraille(this.text);
+      resultElement.value = translateToBraille(this.text);
     } else {
       console.log("Translation Failed")
     }
@@ -56,7 +56,7 @@ export class TranslatorComponent {
 
     reader.onload = (e: any) => {
       const content: string = e.target.result;
-      resultElement.value = latinToBraille(content);
+      resultElement.value = translateToBraille(content);
       this.showOverlay = false;
     };
 

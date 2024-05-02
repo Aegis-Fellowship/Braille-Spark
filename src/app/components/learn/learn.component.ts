@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 @Component({
   selector: 'app-learn',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavbarComponent],
+  imports: [CommonModule, FormsModule, NavbarComponent, CharacterCardComponent],
   templateUrl: './learn.component.html',
   styleUrl: './learn.component.sass'
 })
@@ -66,6 +67,15 @@ export class LearnComponent {
     for (let item of this.modules) {
       if (id == item.id) {
         return item.moduleContent
+      }
+    }
+    return ""
+  }
+
+  getCharacters(id: string) {
+    for (let item of this.modules) {
+      if (id == item.id) {
+        return item.character
       }
     }
     return ""
