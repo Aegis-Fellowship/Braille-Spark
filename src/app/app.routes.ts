@@ -5,6 +5,7 @@ import { DashboardComponent } from './landing/dashboard/dashboard.component';
 import { ManageAccountComponent } from './components/manage-account/manage-account.component';
 import { TranslatorComponent } from './components/translator/translator.component';
 import { LearnComponent } from './components/learn/learn.component';
+import { AdditionalResourcesComponent } from './components/additional-resources/additional-resources.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent},
@@ -12,4 +13,5 @@ export const routes: Routes = [
     { path: 'manage-account', component: ManageAccountComponent},
     { path: 'translator', component: TranslatorComponent},
     { path: 'learn', component: LearnComponent},
+    {path:'resources',component:AdditionalResourcesComponent}
 ];
