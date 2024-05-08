@@ -32,7 +32,7 @@ export class LoginComponent {
   }
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/login'
+  endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/login'
   onSubmit() {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {

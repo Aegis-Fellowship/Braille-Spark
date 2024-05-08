@@ -28,7 +28,7 @@ export class RegisterComponent {
   }
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/registration'
+  endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/registration'
   onSubmit() {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {

@@ -22,7 +22,7 @@ export class ChangePasswordComponent {
     userID = localStorage.getItem('id');
 
     constructor(private http: HttpClient, private router: Router) {}
-    endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/manage-account/editPassword'
+    endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/manage-account/editPassword'
     onSubmit() {
       this.http.put(this.endpoint, this.formData)
         .subscribe((response) => {

@@ -20,7 +20,7 @@ export class ChangeUsernameComponent {
   userID = localStorage.getItem('id');
 
   constructor(private http: HttpClient, private router: Router) {}
-  endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/manage-account/editUsername'
+  endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/manage-account/editUsername'
   onSubmit() {
     this.http.put(this.endpoint, this.formData)
       .subscribe((response) => {

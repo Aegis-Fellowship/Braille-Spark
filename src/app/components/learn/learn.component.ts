@@ -27,18 +27,17 @@ export class LearnComponent {
   userID = localStorage.getItem('id');
   
   loadModules() {
-    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/modules'
+    this.endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/modules'
     this.http.get(this.endpoint)
       .subscribe((response) => {
         this.modules = response;
-        console.log(this.modules)
       }, (error) => {
         console.log(error.Message)
       });
   };
 
   checkAdmin() {
-    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/checkAdmin'
+    this.endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/checkAdmin'
     this.http.get(this.endpoint)
       .subscribe((response) => {
         if (response) {
@@ -88,7 +87,7 @@ export class LearnComponent {
     "content": ""
   }
   addModule() {
-    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/addModule'
+    this.endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/addModule'
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
         window.location.reload()
@@ -99,7 +98,7 @@ export class LearnComponent {
 
   // Delete Module
   deleteModule(moduleID: string) {
-    this.endpoint = 'http://localhost:8080/aegis-backend/' + this.userID + '/deleteModule/' + moduleID
+    this.endpoint = 'https://braille-spark-server.onrender.com/aegis-backend/' + this.userID + '/deleteModule/' + moduleID
     this.http.delete(this.endpoint)
       .subscribe((response) => {
         window.location.reload()
