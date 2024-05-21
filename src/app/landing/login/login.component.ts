@@ -37,7 +37,7 @@ export class LoginComponent {
     this.http.post(this.endpoint, this.formData)
       .subscribe((response) => {
         localStorage.setItem('id', response.toString());
-        window.location.href = "dashboard"
+        window.location.href = ""
       }, (error) => {
         this.toggleErrorMessage()
       });

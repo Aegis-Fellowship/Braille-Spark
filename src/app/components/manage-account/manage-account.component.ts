@@ -22,4 +22,8 @@ export class ManageAccountComponent {
   changePanel(panel: string) {
     this.currentPanel = panel
   }
+
+  logout() {
+    localStorage.removeItem('id');
+  }
 }
